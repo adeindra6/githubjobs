@@ -14,6 +14,7 @@ app.get("/", (request, response) => {
 
 require("./routes/user.routes.js")(app);
 require("./routes/job-list.routes.js")(app);
+require("./routes/job-detail.routes.js")(app);
 
 app.listen(3001, () => {
     console.log("Server is running on port 3001");
