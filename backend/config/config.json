@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "dusttodust",
+    "database": "githubjobs",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "dusttodust",
+    "database": "githubjobs_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "dusttodust",
+    "database": "githubjobs_prod",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
