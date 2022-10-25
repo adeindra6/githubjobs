@@ -1,11 +1,15 @@
 import React from 'react';
 import axios from "axios";
 import {api_url} from "../variables.js";
+import {useDispatch} from "react-redux";
+import {setUser} from "../redux/user/action.js";
 import "../styles.css";
 
 const Login = (props) => {
     let username = "";
     let password = "";
+
+    const dispatch = useDispatch();
 
     const usernameInputHandler = (event) => {
         username = event.target.value;
@@ -23,6 +27,7 @@ const Login = (props) => {
             })
             .then((response) => {
                 console.log(response.data);
+                dispatch(setUser(response.data.token));
             })
             .catch((error) => {
                 console.log(error.response.data);
