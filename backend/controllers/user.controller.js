@@ -22,22 +22,31 @@ exports.login = async (req, res) => {
         type: QueryTypes.SELECT,
     });
 
-    const token = jwt.sign({
-        "username": user_login[0].username,
-    }, "SecretKey123", {
-        "expiresIn": "1d",
-        "algorithm": "HS512",
-    });
+    if(user_login.length > 0) {
+        const token = jwt.sign({
+            "username": user_login[0].username,
+        }, "SecretKey123", {
+            "expiresIn": "1d",
+            "algorithm": "HS512",
+        });
 
-    let date = new Date();
-    let expire = new Date(date.getTime() + (1 * 24 * 60 * 60 * 1000)).toLocaleString("id-ID", {
-        timeZone: "Asia/Jakarta",
-    });
+        let date = new Date();
+        let expire = new Date(date.getTime() + (1 * 24 * 60 * 60 * 1000)).toLocaleString("id-ID", {
+            timeZone: "Asia/Jakarta",
+        });
 
-    res.send({
-        "code": 200,
-        "status": "SUCCESS",
-        "expire": expire,
-        "token": token,
-    });
+        res.send({
+            "code": 200,
+            "status": "SUCCESS",
+            "expire": expire,
+            "token": token,
+        });
+    }
+    else {
+        res.status(404).send({
+            "code": 404,
+            "status": "USER NOT FOUND",
+            "message": "Wrong Username or Password",
+        });
+    }
 };
